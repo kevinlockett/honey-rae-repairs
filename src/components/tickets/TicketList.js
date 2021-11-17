@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
+import { useHistory } from "react-router"
+import './TicketList.css'
 
 export const TicketList = () => {
     const [tickets, setTickets] = useState([])
+    const [active, setActive] =useState('')
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -14,20 +18,27 @@ export const TicketList = () => {
         []
     )
 
+    useEffect(() => {
+        const activeTicketCount = tickets.filter(t => t.dateCompleted === '').length
+        setActive(`There are ${activeTicketCount} open tickets`)
+    }, [tickets])
+
     return (
         <>
+            <div>
+                <button onClick={() => history.push("/ticket/create")}>Create Ticket</button>
+            </div>
+            { active }
             {
                 tickets.map(
                     (ticket) => {
                         return <div key={`ticket--${ticket.id}`}>
-                            <p>
-                                {ticket.description} Submitted by {ticket.customer.name}
-                                and serviced by {ticket.employee.name}
+                            <p className={`ticket ${ticket.emergency ? 'emergency' : ''}`}>
+                                {ticket.emergency ? "🚑" : ""} {ticket.description} Submitted by {ticket.customer.name} and serviced by {ticket.employee.name}
                             </p>
                         </div>
                     }
                 )
-
             }
         </>
     )
