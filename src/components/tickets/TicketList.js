@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import { useHistory } from "react-router"
-import './TicketList.css'
+import { Link } from "react-router-dom"
+import './Tickets.css'
 
 export const TicketList = () => {
-    const [tickets, setTickets] = useState([])
+    const [tickets, updateTickets] = useState([])
     const [active, setActive] =useState('')
     const history = useHistory()
 
@@ -12,7 +13,7 @@ export const TicketList = () => {
             fetch("http://localhost:8088/serviceTickets?_expand=employee&_expand=customer")
             .then(res => res.json())
             .then((data) => {
-                setTickets(data)
+                updateTickets(data)
             })
         },
         []
@@ -26,7 +27,7 @@ export const TicketList = () => {
     return (
         <>
             <div>
-                <button onClick={() => history.push("/ticket/create")}>Create Ticket</button>
+                <button onClick={() => history.push("/tickets/create")}>Create Ticket</button>
             </div>
             { active }
             {
@@ -34,7 +35,7 @@ export const TicketList = () => {
                     (ticket) => {
                         return <div key={`ticket--${ticket.id}`}>
                             <p className={`ticket ${ticket.emergency ? 'emergency' : ''}`}>
-                                {ticket.emergency ? "🚑" : ""} {ticket.description} Submitted by {ticket.customer.name} and serviced by {ticket.employee.name}
+                                {ticket.emergency ? "🚑" : ""} <Link to={`/tickets/${ticket.id}`}>{ticket.description}</Link> Submitted by {ticket.customer.name} and serviced by {ticket.employee.name}
                             </p>
                         </div>
                     }

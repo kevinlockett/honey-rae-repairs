@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 export const EmployeeList = () => {
     const [employees, changeEmployee] = useState([])
@@ -17,22 +18,22 @@ export const EmployeeList = () => {
         []
     )
 
-    useEffect(() => {
-        
-        const specialties = employees.map(
-            (employee) => {
-                return employee.specialty
-            }
-        ).join(', ')
+    useEffect(
+        () => {
+            const specialties = employees.map(
+                (employee) => {
+                    return employee.specialty
+                }
+            ).join(', ')
 
-        setSpecialties(specialties)
+            setSpecialties(specialties)
 
         /*
             1. Use .map() to get the specialty of each employee
             2. Then update a state variable to be a comma-separated string
                 (e.g. "iPhone, Printers, ...")
         */
-    }, [employees])
+        }, [employees])
 
     return (
         <>
@@ -47,7 +48,9 @@ export const EmployeeList = () => {
             {
                 employees.map(
                     (employee) => {
-                        return <p key={`employee--${employee.id}`}>{employee.name}</p>
+                        return <p key={`employee--${employee.id}`}>
+                            <Link to={`/employees/${employee.id}`} >{employee.name}</Link>
+                        </p>
                     }
                 )
             }
