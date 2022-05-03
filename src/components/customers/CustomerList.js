@@ -5,7 +5,7 @@ export const CustomerList = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/customers")
+            fetch("https://honey-api-kevin-6ofqp.ondigitalocean.app//customers")
                 .then(res => res.json())
                 .then((data) => {
                     setCustomers(data)
