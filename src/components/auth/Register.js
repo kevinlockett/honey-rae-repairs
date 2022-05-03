@@ -9,7 +9,7 @@ export const Register = (props) => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${customer.email}`)
+        return fetch(`https://honey-api-kevin-6ofqp.ondigitalocean.app//customers?email=${customer.email}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -18,7 +18,7 @@ export const Register = (props) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8088/customers", {
+                    fetch("https://honey-api-kevin-6ofqp.ondigitalocean.app//customers", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

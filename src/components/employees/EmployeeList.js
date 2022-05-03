@@ -8,7 +8,7 @@ export const EmployeeList = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/employees")
+            fetch("https://honey-api-kevin-6ofqp.ondigitalocean.app//employees")
                 .then(res => res.json())
                 .then((data) => {
                     changeEmployee(data)
