@@ -25,7 +25,7 @@ export const EmployeeForm = () => {
             body: JSON.stringify(newEmployee)
         }
 
-        return fetch('https://honey-api-kevin-6ofqp.ondigitalocean.app//employees', fetchOption)
+        return fetch('https://honey-rae-api-8lpdi.ondigitalocean.app/employees', fetchOption)
             .then(() => {
                 history.push("/employees")
             })

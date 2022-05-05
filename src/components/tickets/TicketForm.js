@@ -28,7 +28,7 @@ export const TicketForm = () => {
             body: JSON.stringify(newTicket)
         }
 
-        return fetch('https://honey-api-kevin-6ofqp.ondigitalocean.app//serviceTickets', fetchOption)
+        return fetch('https://honey-rae-api-8lpdi.ondigitalocean.app/serviceTickets', fetchOption)
             .then(() => {
                 history.push("/tickets")
             })
