@@ -2,7 +2,7 @@
 @import "./components/employees/Employees.css";
 
 body {
-  margin: 0;
+  margin: 2em 3em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
