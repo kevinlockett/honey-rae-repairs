@@ -9,7 +9,7 @@ export const Login = () => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`https://honey-api-kevin-6ofqp.ondigitalocean.app//customers?email=${email}`)
+        return fetch(`https://honey-rae-api-8lpdi.ondigitalocean.app/customers?email=${email}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }

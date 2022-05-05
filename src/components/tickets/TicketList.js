@@ -9,7 +9,7 @@ export const TicketList = () => {
 
     useEffect(
         () => {
-            fetch("https://honey-api-kevin-6ofqp.ondigitalocean.app//serviceTickets?_expand=employee&_expand=customer")
+            fetch("https://honey-rae-api-8lpdi.ondigitalocean.app/serviceTickets?_expand=employee&_expand=customer")
             .then(res => res.json())
             .then((data) => {
                 setTickets(data)
